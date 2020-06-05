@@ -62,4 +62,4 @@ CMD service ssh start \
   && start-dfs.sh \
   && hadoop-daemon.sh start portmap \
   && hadoop-daemon.sh start nfs3 \
-  && bash
+  && bash read -s -n1
