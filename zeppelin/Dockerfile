@@ -1,14 +1,10 @@
-FROM java:7
-
-ENV DEBIAN_FRONTEND noninteractive
+FROM openjdk:8
 
 # Refresh package lists
 RUN apt-get update
-RUN apt-get -qy dist-upgrade
 
-RUN apt-get install -qy rsync curl openssh-server openssh-client vim nfs-common
+RUN apt-get install -qy rsync curl openssh-server openssh-client vim
 
-RUN mkdir -p /data/hdfs-nfs/
 RUN mkdir -p /opt
 WORKDIR /opt
 
@@ -19,7 +15,7 @@ RUN mv zeppelin-0.8.2-bin-netinst zeppelin
 # Setup
 WORKDIR /opt/zeppelin
 ENV PATH /opt/zeppelin/bin:$PATH
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 # Configure ssh client
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa && \
