@@ -1,5 +1,7 @@
 FROM openjdk:8
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Refresh package lists
 RUN apt-get update
 
