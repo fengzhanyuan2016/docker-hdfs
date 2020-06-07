@@ -16,9 +16,12 @@ RUN mv zeppelin-0.8.2-bin-netinst zeppelin
 
 # Setup
 WORKDIR /opt/zeppelin
+COPY zeppelin/zeppelin-site.xml conf/zeppelin-site.xml
+
 RUN ls .
 ENV PATH /opt/zeppelin/bin:$PATH
 ENV JAVA_HOME /usr/local/openjdk-8
+
 
 # Configure ssh client
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa && \
@@ -36,6 +39,7 @@ RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/ss
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 # => Quick fix for enabling datanode connections
 #    ssh -L 50010:localhost:50010 root@192.168.99.100 -p 22022 -o PreferredAuthentications=password
+
 
 
 # SSH
