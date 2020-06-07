@@ -8,13 +8,14 @@ RUN apt-get update
 RUN apt-get install -qy rsync curl openssh-server openssh-client vim
 
 RUN mkdir -p /opt
-WORKDIR /opt
+WORKDIR /opt/zeppelin
 
 # Install Hadoop
-ADD https://mirror.bit.edu.cn/apache/zeppelin/zeppelin-0.8.2/zeppelin-0.8.2-bin-netinst.tgz zeppelin
+ADD https://mirror.bit.edu.cn/apache/zeppelin/zeppelin-0.8.2/zeppelin-0.8.2-bin-netinst.tgz .
 
 # Setup
 WORKDIR /opt/zeppelin
+RUN ls .
 ENV PATH /opt/zeppelin/bin:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
