@@ -18,7 +18,7 @@ RUN mv zeppelin-0.8.2-bin-netinst zeppelin
 WORKDIR /opt/zeppelin
 RUN ls .
 ENV PATH /opt/zeppelin/bin:$PATH
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+ENV JAVA_HOME /usr/local/openjdk-8
 
 # Configure ssh client
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa && \
