@@ -11,7 +11,8 @@ RUN mkdir -p /opt
 WORKDIR /opt/zeppelin
 
 # Install Hadoop
-ADD https://mirror.bit.edu.cn/apache/zeppelin/zeppelin-0.8.2/zeppelin-0.8.2-bin-netinst.tgz .
+ADD https://mirror.bit.edu.cn/apache/zeppelin/zeppelin-0.8.2/zeppelin-0.8.2-bin-netinst.tgz /tmp
+ADD /tmp/zeppelin-0.8.2-bin-netinst.tgz .
 
 # Setup
 WORKDIR /opt/zeppelin
