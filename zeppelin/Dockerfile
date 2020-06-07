@@ -16,7 +16,7 @@ RUN mv zeppelin-0.8.2-bin-netinst zeppelin
 
 # Setup
 WORKDIR /opt/zeppelin
-COPY zeppelin/zeppelin-site.xml conf/zeppelin-site.xml
+COPY zeppelin-site.xml conf/zeppelin-site.xml
 
 RUN ls .
 ENV PATH /opt/zeppelin/bin:$PATH
