@@ -8,11 +8,11 @@ RUN apt-get update
 RUN apt-get install -qy rsync curl openssh-server openssh-client vim
 
 RUN mkdir -p /opt
-RUN mkdir -p /opt/zeppelin
 WORKDIR /opt
+
 # Install Hadoop
-ADD https://mirrors.tuna.tsinghua.edu.cn/apache/zeppelin/zeppelin-0.8.2/zeppelin-0.8.2-bin-netinst.tgz .
-ADD zeppelin-0.8.2-bin-netinst.tgz zeppelin
+RUN curl -L https://mirrors.tuna.tsinghua.edu.cn/apache/zeppelin/zeppelin-0.8.2/zeppelin-0.8.2-bin-netinst.tgz -s -o - | tar -xzf -
+RUN mv zeppelin-0.8.2-bin-netinst zeppelin
 
 # Setup
 WORKDIR /opt/zeppelin
