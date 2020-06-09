@@ -14,7 +14,7 @@ RUN mkdir -p /opt
 WORKDIR /opt
 
 # Install Hadoop
-ADD https://archive.apache.org/dist/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz .
+ADD http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.7.7/hadoop-2.7.7.tar.gz .
 RUN tar -xzf hadoop-2.7.2.tar.gz
 RUN mv hadoop-2.7.2 hadoop && rm -rf hadoop-2.7.2.tar.gz
 
