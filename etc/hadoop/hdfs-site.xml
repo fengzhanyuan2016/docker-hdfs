@@ -120,7 +120,18 @@
     </property>
 
     <property>
+    	<name>dfs.namenode.name.dir</name>
+    	<value>file:/data/hadoop/dfs/name</value>
+    </property>  
+
+    <property>
       <name>dfs.nfs.exports.allowed.hosts</name>
       <value>* rw</value>
     </property>
+
+    <property>
+      <name>dfs.webhdfs.enabled</name>
+      <value>true</value>
+    </property>
+
 </configuration>
