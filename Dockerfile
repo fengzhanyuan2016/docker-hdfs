@@ -15,8 +15,8 @@ WORKDIR /opt
 
 # Install Hadoop
 ADD https://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/core/hadoop-2.7.7/hadoop-2.7.7.tar.gz .
-RUN tar -xzf hadoop-2.7.2.tar.gz
-RUN mv hadoop-2.7.2 hadoop && rm -rf hadoop-2.7.2.tar.gz
+RUN tar -xzf hadoop-2.7.7.tar.gz && rm -rf hadoop-2.7.7.tar.gz
+RUN mv hadoop-2.7.7 hadoop
 
 # Setup
 WORKDIR /opt/hadoop
