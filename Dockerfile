@@ -14,7 +14,7 @@ RUN mkdir -p /opt
 WORKDIR /opt
 
 # Install Hadoop
-RUN curl -L https://archive.apache.org/dist/hadoop/core/hadoop-2.7.2/hadoop-2.7.2.tar.gz -s -o - | tar -xzf -
+RUN curl -L https://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.7.2.0/hadoop-2.7.2.tar.gz -s -o - | tar -xzf -
 RUN mv hadoop-2.7.2 hadoop
 
 # Setup
