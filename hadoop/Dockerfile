@@ -1,5 +1,4 @@
 FROM java:7
-MAINTAINER mdouchement
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -42,8 +41,8 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 #    ssh -L 50010:localhost:50010 root@192.168.99.100 -p 22022 -o PreferredAuthentications=password
 
 # Pseudo-Distributed Operation
-COPY etc/hadoop/core-site.xml etc/hadoop/core-site.xml
-COPY etc/hadoop/hdfs-site.xml etc/hadoop/hdfs-site.xml
+COPY core-site.xml etc/hadoop/core-site.xml
+COPY hdfs-site.xml etc/hadoop/hdfs-site.xml
 RUN hdfs namenode -format
 
 # SSH
