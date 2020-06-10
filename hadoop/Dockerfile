@@ -21,6 +21,7 @@ RUN mv hadoop-2.7.7 hadoop
 WORKDIR /opt/hadoop
 ENV PATH /opt/hadoop/bin:/opt/hadoop/sbin:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV HADOOP_HOME /opt/hadoop
 RUN sed --in-place='.ori' -e "s/\${JAVA_HOME}/\/usr\/lib\/jvm\/java-7-openjdk-amd64/" etc/hadoop/hadoop-env.sh
 
 # Configure ssh client
@@ -60,6 +61,7 @@ EXPOSE 50090
 
 CMD service ssh start \
   && start-dfs.sh \
+  && httpfs.sh start \
   && hadoop-daemon.sh start portmap \
   && hadoop-daemon.sh start nfs3 \
   && sleep 100000h
