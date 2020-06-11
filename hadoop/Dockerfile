@@ -74,6 +74,9 @@ EXPOSE 50075
 EXPOSE 50090
 
 EXPOSE 10000
+EXPOSE 10001
+EXPOSE 10002
+
 
 CMD service ssh start \
   && start-dfs.sh \
