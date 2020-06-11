@@ -38,13 +38,23 @@
 
         <property>
         <name>hive.server2.thrift.bind.host</name>
-        <value>hive</value>
+        <value>0.0.0.0</value>
         </property>
 
         <property>
         <name>hive.server2.long.polling.timeout</name>
         <value>5000</value>
         </property>
+
+        <property>
+                <name>hive.server2.webui.host</name>
+                <value>0.0.0.0</value>
+        </property>
+        <property>
+                <name>hive.server2.webui.port</name>
+                <value>10002</value>
+        </property>
+
 
 
 </configuration>
