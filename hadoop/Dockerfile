@@ -55,6 +55,7 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 COPY core-site.xml etc/hadoop/core-site.xml
 COPY hdfs-site.xml etc/hadoop/hdfs-site.xml
 COPY hive-site.xml /opt/hive/conf/hive-site.xml
+COPY entrypoint.sh ./entrypoint.sh
 
 RUN hdfs namenode -format
 
@@ -77,11 +78,4 @@ EXPOSE 10000
 EXPOSE 10001
 EXPOSE 10002
 
-
-CMD service ssh start \
-  && start-dfs.sh \
-  && httpfs.sh start \
-  && hadoop-daemon.sh start portmap \
-  && hadoop-daemon.sh start nfs3 \
-  && hive '–service hiveserver2 &' \
-  && sleep 1000000h
+CMD [ "./entrypoint.sh" ]
