@@ -80,4 +80,5 @@ CMD service ssh start \
   && httpfs.sh start \
   && hadoop-daemon.sh start portmap \
   && hadoop-daemon.sh start nfs3 \
-  && hive –service hiveserver2
+  && hive '–service hiveserver2 &' \
+  && sleep 1000000h
