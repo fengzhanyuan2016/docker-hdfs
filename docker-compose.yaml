@@ -1,0 +1,59 @@
+version: "3"
+services: 
+  hdfs:
+    image: fengzhanyuan/hadoop:hive
+    networks: 
+      - spark-net
+    volumes: 
+      - hdfs:/data/hadoop/dfs/name
+    depends_on: 
+      - "hdfs-job"
+    ports: 
+      - "8020:8020"
+      - "10000:10000"
+      - "10002:10002"
+      - "10001:10001"
+      - "8020:8020"
+      - "50010:50010"
+      - "50020:50020"
+      - "50070:50070"
+      - "50075:50075"
+      - "50090:50090"
+      - "22022:22"
+
+  hue:
+    image: fengzhanyuan/hue
+    networks: 
+      - spark-net
+    depends_on: 
+      - "hdfs"
+    ports: 
+      - "8888:8888"
+
+  hdfs-job:
+    image: fengzhanyuan/hadoop:hive
+    depends_on: 
+      - "mysql"
+    networks: 
+      - spark-net
+    command: schematool -dbType mysql -initSchema
+
+
+  mysql:
+    image: mysql:5.6
+    environment: 
+      MYSQL_ROOT_PASSWORD: "1qaz2wsx"
+      MYSQL_DATABASE: "hivedb"
+    volumes: 
+      - mysql:/var/lib/mysql
+    networks: 
+      - spark-net
+    ports: 
+      - "8888:8888"
+
+networks: 
+  spark-net:
+
+volumes:
+  hdfs:
+  mysql:
